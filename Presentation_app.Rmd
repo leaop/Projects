@@ -1,0 +1,105 @@
+---
+title: "MPG Predictor App"
+author: "Leão Pereira"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+---
+
+## Introduction
+
+This is a simple Shiny app that predicts the fuel efficiency (MPG) of a car based on its weight.
+
+---
+
+## Application Functionality
+
+- **Input:** Car weight (slider)
+- **Output:** Predicted MPG
+- **Dataset:** `mtcars`
+- **Model:** Simple linear regression (MPG ~ Weight)
+
+---
+---
+title: "Interactive Car Analysis - MPG Dataset"
+author: "Leão Pereira"
+date: "`r Sys.Date()`"
+output: ioslides_presentation
+---
+
+## 1. Introduction
+
+This presentation explores car performance using the `mpg` dataset.  
+We combine interactive charts and map-based visuals to better understand fuel efficiency trends.
+
+---
+
+## 2. Fuel Efficiency by Class
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(plotly)
+library(dplyr)
+library(leaflet)
+library(tibble)
+library(tidyr)
+
+data(mpg)
+
+p <- ggplot(mpg, aes(x = class, y = hwy, fill = class)) +
+  geom_boxplot() +
+  theme_minimal() +
+  labs(title = "Highway MPG by Car Class", y = "MPG (Highway)", x = "")
+
+ggplotly(p)
+```
+
+---
+
+## 3. Engine Displacement vs Fuel Efficiency
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+plot_ly(data = mpg,
+        x = ~displ,
+        y = ~hwy,
+        type = "scatter",
+        mode = "markers",
+        color = ~class,
+        text = ~paste("Model:", model)) %>%
+  layout(title = "Displacement vs Highway MPG",
+         xaxis = list(title = "Engine Displacement"),
+         yaxis = list(title = "Highway MPG"))
+```
+
+---
+
+## 4. Map of Manufacturers (Sample Locations)
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+fake_locations <- mpg %>%
+  distinct(manufacturer) %>%
+  mutate(lat = runif(n(), min = 25, max = 55),
+         lon = runif(n(), min = -120, max = -70))
+
+leaflet(fake_locations) %>%
+  addProviderTiles("CartoDB.Positron") %>%
+  addMarkers(~lon, ~lat, popup = ~manufacturer, label = ~manufacturer)
+```
+
+---
+
+## 5. Conclusion
+
+- SUV and pickup classes tend to have lower highway MPG.
+- Engine displacement is inversely correlated with fuel economy.
+- Visual tools enhance exploration of performance patterns.
+- Mapping manufacturers can support strategic decisions.
+
+Thank you!
+
+## The Model
+
+```{r}
+library(dplyr)
+model <- lm(mpg ~ wt, data = mtcars)
+summary(model)
+```
