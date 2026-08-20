@@ -1,0 +1,41 @@
+﻿category,date,forecast_units,selected_model
+Clothing,2025-01-12,212.5,Moving Average 4W
+Clothing,2025-01-19,212.5,Moving Average 4W
+Clothing,2025-01-26,212.5,Moving Average 4W
+Clothing,2025-02-02,212.5,Moving Average 4W
+Clothing,2025-02-09,212.5,Moving Average 4W
+Clothing,2025-02-16,212.5,Moving Average 4W
+Clothing,2025-02-23,212.5,Moving Average 4W
+Clothing,2025-03-02,212.5,Moving Average 4W
+Electronics,2025-01-12,254.93060445114145,Holt-Winters
+Electronics,2025-01-19,282.23019672461436,Holt-Winters
+Electronics,2025-01-26,255.31854856447316,Holt-Winters
+Electronics,2025-02-02,239.40022844759773,Holt-Winters
+Electronics,2025-02-09,254.54653115490504,Holt-Winters
+Electronics,2025-02-16,281.84612342837795,Holt-Winters
+Electronics,2025-02-23,254.93447526823675,Holt-Winters
+Electronics,2025-03-02,239.01615515136126,Holt-Winters
+Grocery,2025-01-12,219.5,Moving Average 4W
+Grocery,2025-01-19,219.5,Moving Average 4W
+Grocery,2025-01-26,219.5,Moving Average 4W
+Grocery,2025-02-02,219.5,Moving Average 4W
+Grocery,2025-02-09,219.5,Moving Average 4W
+Grocery,2025-02-16,219.5,Moving Average 4W
+Grocery,2025-02-23,219.5,Moving Average 4W
+Grocery,2025-03-02,219.5,Moving Average 4W
+Home,2025-01-12,258.5,Moving Average 4W
+Home,2025-01-19,258.5,Moving Average 4W
+Home,2025-01-26,258.5,Moving Average 4W
+Home,2025-02-02,258.5,Moving Average 4W
+Home,2025-02-09,258.5,Moving Average 4W
+Home,2025-02-16,258.5,Moving Average 4W
+Home,2025-02-23,258.5,Moving Average 4W
+Home,2025-03-02,258.5,Moving Average 4W
+Personal Care,2025-01-12,303.6950548828112,Holt-Winters
+Personal Care,2025-01-19,263.5353892000713,Holt-Winters
+Personal Care,2025-01-26,329.37633761455777,Holt-Winters
+Personal Care,2025-02-02,308.5167616275985,Holt-Winters
+Personal Care,2025-02-09,306.8384873261041,Holt-Winters
+Personal Care,2025-02-16,266.6788216433642,Holt-Winters
+Personal Care,2025-02-23,332.5197700578507,Holt-Winters
+Personal Care,2025-03-02,311.6601940708914,Holt-Winters

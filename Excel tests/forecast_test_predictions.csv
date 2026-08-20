@@ -1,0 +1,121 @@
+﻿category,date,actual,forecast,model
+Clothing,2024-11-17,231,479.0,Naive
+Clothing,2024-11-24,283,479.0,Naive
+Clothing,2024-12-01,260,479.0,Naive
+Clothing,2024-12-08,322,479.0,Naive
+Clothing,2024-12-15,195,479.0,Naive
+Clothing,2024-12-22,312,479.0,Naive
+Clothing,2024-12-29,179,479.0,Naive
+Clothing,2025-01-05,164,479.0,Naive
+Clothing,2024-11-17,231,310.75,Moving Average 4W
+Clothing,2024-11-24,283,310.75,Moving Average 4W
+Clothing,2024-12-01,260,310.75,Moving Average 4W
+Clothing,2024-12-08,322,310.75,Moving Average 4W
+Clothing,2024-12-15,195,310.75,Moving Average 4W
+Clothing,2024-12-22,312,310.75,Moving Average 4W
+Clothing,2024-12-29,179,310.75,Moving Average 4W
+Clothing,2025-01-05,164,310.75,Moving Average 4W
+Clothing,2024-11-17,231,324.17366166719654,Holt-Winters
+Clothing,2024-11-24,283,236.8114505505207,Holt-Winters
+Clothing,2024-12-01,260,264.44884238198966,Holt-Winters
+Clothing,2024-12-08,322,358.9862390018672,Holt-Winters
+Clothing,2024-12-15,195,326.58164238919693,Holt-Winters
+Clothing,2024-12-22,312,239.2194312725211,Holt-Winters
+Clothing,2024-12-29,179,266.85682310399005,Holt-Winters
+Clothing,2025-01-05,164,361.3942197238676,Holt-Winters
+Electronics,2024-11-17,273,448.0,Naive
+Electronics,2024-11-24,251,448.0,Naive
+Electronics,2024-12-01,188,448.0,Naive
+Electronics,2024-12-08,128,448.0,Naive
+Electronics,2024-12-15,507,448.0,Naive
+Electronics,2024-12-22,228,448.0,Naive
+Electronics,2024-12-29,204,448.0,Naive
+Electronics,2025-01-05,90,448.0,Naive
+Electronics,2024-11-17,273,303.0,Moving Average 4W
+Electronics,2024-11-24,251,303.0,Moving Average 4W
+Electronics,2024-12-01,188,303.0,Moving Average 4W
+Electronics,2024-12-08,128,303.0,Moving Average 4W
+Electronics,2024-12-15,507,303.0,Moving Average 4W
+Electronics,2024-12-22,228,303.0,Moving Average 4W
+Electronics,2024-12-29,204,303.0,Moving Average 4W
+Electronics,2025-01-05,90,303.0,Moving Average 4W
+Electronics,2024-11-17,273,248.135500504391,Holt-Winters
+Electronics,2024-11-24,251,307.7692235433045,Holt-Winters
+Electronics,2024-12-01,188,283.85956921712557,Holt-Winters
+Electronics,2024-12-08,128,280.304043391075,Holt-Winters
+Electronics,2024-12-15,507,250.56684258714589,Holt-Winters
+Electronics,2024-12-22,228,310.20056562605936,Holt-Winters
+Electronics,2024-12-29,204,286.29091129988046,Holt-Winters
+Electronics,2025-01-05,90,282.73538547382987,Holt-Winters
+Grocery,2024-11-17,393,183.0,Naive
+Grocery,2024-11-24,287,183.0,Naive
+Grocery,2024-12-01,396,183.0,Naive
+Grocery,2024-12-08,275,183.0,Naive
+Grocery,2024-12-15,253,183.0,Naive
+Grocery,2024-12-22,185,183.0,Naive
+Grocery,2024-12-29,361,183.0,Naive
+Grocery,2025-01-05,79,183.0,Naive
+Grocery,2024-11-17,393,218.75,Moving Average 4W
+Grocery,2024-11-24,287,218.75,Moving Average 4W
+Grocery,2024-12-01,396,218.75,Moving Average 4W
+Grocery,2024-12-08,275,218.75,Moving Average 4W
+Grocery,2024-12-15,253,218.75,Moving Average 4W
+Grocery,2024-12-22,185,218.75,Moving Average 4W
+Grocery,2024-12-29,361,218.75,Moving Average 4W
+Grocery,2025-01-05,79,218.75,Moving Average 4W
+Grocery,2024-11-17,393,288.6091214973227,Holt-Winters
+Grocery,2024-11-24,287,325.0650760008376,Holt-Winters
+Grocery,2024-12-01,396,299.334766270432,Holt-Winters
+Grocery,2024-12-08,275,247.38747688551013,Holt-Winters
+Grocery,2024-12-15,253,288.43793442724274,Holt-Winters
+Grocery,2024-12-22,185,324.89388893075767,Holt-Winters
+Grocery,2024-12-29,361,299.16357920035205,Holt-Winters
+Grocery,2025-01-05,79,247.21628981543017,Holt-Winters
+Home,2024-11-17,459,293.0,Naive
+Home,2024-11-24,129,293.0,Naive
+Home,2024-12-01,194,293.0,Naive
+Home,2024-12-08,292,293.0,Naive
+Home,2024-12-15,340,293.0,Naive
+Home,2024-12-22,400,293.0,Naive
+Home,2024-12-29,216,293.0,Naive
+Home,2025-01-05,78,293.0,Naive
+Home,2024-11-17,459,269.5,Moving Average 4W
+Home,2024-11-24,129,269.5,Moving Average 4W
+Home,2024-12-01,194,269.5,Moving Average 4W
+Home,2024-12-08,292,269.5,Moving Average 4W
+Home,2024-12-15,340,269.5,Moving Average 4W
+Home,2024-12-22,400,269.5,Moving Average 4W
+Home,2024-12-29,216,269.5,Moving Average 4W
+Home,2025-01-05,78,269.5,Moving Average 4W
+Home,2024-11-17,459,266.12376485326564,Holt-Winters
+Home,2024-11-24,129,331.1165756216902,Holt-Winters
+Home,2024-12-01,194,280.4013001335703,Holt-Winters
+Home,2024-12-08,292,283.72180558462026,Holt-Winters
+Home,2024-12-15,340,266.477839692239,Holt-Winters
+Home,2024-12-22,400,331.4706504606636,Holt-Winters
+Home,2024-12-29,216,280.75537497254373,Holt-Winters
+Home,2025-01-05,78,284.0758804235937,Holt-Winters
+Personal Care,2024-11-17,246,224.0,Naive
+Personal Care,2024-11-24,457,224.0,Naive
+Personal Care,2024-12-01,383,224.0,Naive
+Personal Care,2024-12-08,395,224.0,Naive
+Personal Care,2024-12-15,389,224.0,Naive
+Personal Care,2024-12-22,300,224.0,Naive
+Personal Care,2024-12-29,329,224.0,Naive
+Personal Care,2025-01-05,116,224.0,Naive
+Personal Care,2024-11-17,246,214.0,Moving Average 4W
+Personal Care,2024-11-24,457,214.0,Moving Average 4W
+Personal Care,2024-12-01,383,214.0,Moving Average 4W
+Personal Care,2024-12-08,395,214.0,Moving Average 4W
+Personal Care,2024-12-15,389,214.0,Moving Average 4W
+Personal Care,2024-12-22,300,214.0,Moving Average 4W
+Personal Care,2024-12-29,329,214.0,Moving Average 4W
+Personal Care,2025-01-05,116,214.0,Moving Average 4W
+Personal Care,2024-11-17,246,276.9460387080853,Holt-Winters
+Personal Care,2024-11-24,457,218.39528329951798,Holt-Winters
+Personal Care,2024-12-01,383,300.3062347112306,Holt-Winters
+Personal Care,2024-12-08,395,291.7524464672041,Holt-Winters
+Personal Care,2024-12-15,389,277.2401061964957,Holt-Winters
+Personal Care,2024-12-22,300,218.68935078792833,Holt-Winters
+Personal Care,2024-12-29,329,300.60030219964096,Holt-Winters
+Personal Care,2025-01-05,116,292.04651395561444,Holt-Winters
