@@ -1,0 +1,7 @@
+﻿category,objective,status,optimal_discount,forecast_units,effective_price,revenue_est,gross_profit_est,gross_margin_pct,business_goal
+Electronics,gross_profit_est,Optimal,0,1806.9571591832528,1284.0,2320132.9923912967,812046.5473369538,35.0,Maximize Profit
+Personal Care,gross_profit_est,Optimal,0,2670.504773406023,1670.5,4461078.223974762,2007485.2007886425,44.99999999999999,Maximize Profit
+Electronics,revenue_est,Optimal,13,2137.896660785229,1117.08,2388201.6018299637,603913.0487386113,25.28735632183908,Maximize Revenue
+Personal Care,revenue_est,Optimal,0,2670.504773406023,1670.5,4461078.223974762,2007485.2007886425,44.99999999999999,Maximize Revenue
+Electronics,forecast_units,Optimal,13,2137.896660785229,1117.08,2388201.6018299637,603913.0487386113,25.28735632183908,Maximize Volume
+Personal Care,forecast_units,Optimal,14,2975.4021664598845,1436.63,4274552.014401264,1540826.8889120829,36.046511627906966,Maximize Volume

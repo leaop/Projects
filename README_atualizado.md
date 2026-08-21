@@ -47,10 +47,61 @@ Projeto de análise de tráfego em sites:
 
 (https://github.com/leaop/Projects)
 
+
+---
+
+## 📊 Projeto: Retail Analytics — Forecasting, Profit Optimization & Pricing
+
+Projeto integrado de análise de varejo voltado à tomada de decisão financeira e comercial.
+
+O trabalho foi estruturado em três etapas conectadas:
+
+- **Sales Forecasting & Financial Planning** — previsão de demanda, análise de fatores comerciais, cenários, receita, lucro e margem.
+- **Inventory & Profit Optimization** — otimização da alocação de capital e estoque com Excel Solver, respeitando orçamento, demanda e capacidade.
+- **Pricing & Margin Optimization** — análise de sensibilidade de descontos e definição de políticas de preço orientadas a volume, receita, lucro e margem mínima.
+
+Entre os principais pontos desenvolvidos estão:
+
+- validação e tratamento de qualidade dos dados;
+- Holt-Winters, Ridge Regression e Random Forest;
+- análise de MAE, RMSE, MAPE e Bias;
+- avaliação do impacto de desconto, promoção, preço e estoque;
+- análise de break-even e sensibilidade de custos;
+- otimização com Solver e Simplex LP;
+- pricing analytics e otimização de margem;
+- contextualização dos resultados com evidências externas do mercado brasileiro de eletrônicos.
+
+O projeto reforça uma ideia central: **vender mais não significa necessariamente gerar mais lucro**, e decisões de estoque, desconto e preço devem considerar restrições financeiras e retorno econômico.
+
+---
+
+## 🔐 Projeto: CRM & LGPD — Data Governance and Permission-Aware Analytics
+
+Projeto de CRM com foco em **governança de dados, privacidade e proteção de dados pessoais**, utilizando uma base sintética com aproximadamente 50 mil registros.
+
+O objetivo é analisar como dados de clientes podem ser estruturados e utilizados em um ambiente de CRM respeitando princípios de governança e requisitos relacionados à LGPD.
+
+O projeto inclui:
+
+- exploração e validação da base de clientes;
+- análise de permissões e consentimentos;
+- identificação de inconsistências de cadastro e uso de dados;
+- segmentação de clientes considerando regras de autorização;
+- análise de finalidade e uso permitido das informações;
+- construção de indicadores de qualidade e conformidade;
+- preparação de dados para análises de CRM com controle de acesso e rastreabilidade.
+
+A proposta combina **Data Analytics, CRM e Data Governance**, demonstrando como decisões comerciais podem ser apoiadas por dados sem ignorar requisitos de privacidade e uso responsável das informações.
+
 ---
 
 ## 📈 Tecnologias utilizadas
 
+- Python
+- pandas, NumPy, Matplotlib, scikit-learn, statsmodels
+- Microsoft Excel e Solver
+- Power BI
+- SQL
 - R
 - R Markdown
 - Shiny

@@ -1,0 +1,558 @@
+# Retail Analytics Portfolio — Forecasting, Profit Optimization & Pricing
+
+## Overview
+
+This repository presents a three-part retail analytics project designed to demonstrate how data analysis can support increasingly complex business decisions.
+
+The project follows a logical decision-making sequence:
+
+1. **How much are we likely to sell?**
+2. **How much should we buy or allocate?**
+3. **How much should we charge?**
+
+The analysis combines forecasting, financial planning, optimization, and pricing analytics using retail sales data, with a focus on **Electronics** and **Personal Care**.
+
+The main objective is not only to generate predictions, but to connect them to operational and financial decisions.
+
+---
+
+## Business Flow
+
+```text
+Historical Sales Data
+        ↓
+Data Quality & EDA
+        ↓
+Demand Forecasting
+        ↓
+Commercial Drivers Analysis
+        ↓
+Financial Scenario Planning
+        ↓
+Inventory & Capital Allocation
+        ↓
+Pricing & Margin Optimization
+```
+
+---
+
+# Project 1 — Sales Forecasting & Financial Planning
+
+## Business Question
+
+**How much are we likely to sell, and what financial result can we expect under different commercial scenarios?**
+
+The first project begins with exploratory data analysis and evolves into demand forecasting and financial planning.
+
+### Main steps
+
+- data quality validation;
+- correction of inconsistent calendar attributes;
+- analysis by store and product category;
+- weekly demand aggregation;
+- baseline forecasting;
+- Moving Average;
+- Holt-Winters Exponential Smoothing;
+- model evaluation using MAE, RMSE, MAPE and Bias;
+- commercial drivers analysis;
+- Ridge Regression;
+- Random Forest;
+- forecast conditioned on price, discount, promotions, inventory and calendar variables;
+- scenario analysis;
+- estimated revenue, cost, gross profit and margin;
+- break-even analysis;
+- cost sensitivity analysis.
+
+---
+
+## Data Quality Finding
+
+The original `day_of_week` field was inconsistent with the actual calendar date for a large portion of the dataset.
+
+Instead of silently replacing the values, the project:
+
+- preserved the original field;
+- recalculated the correct weekday using `date`;
+- created a validation flag;
+- documented the correction as a data-governance rule.
+
+This allows the transformation to remain auditable and reproducible.
+
+---
+
+## Forecasting Findings
+
+The weekly sales series showed substantial volatility, especially for Electronics and Personal Care.
+
+Initial forecasting compared:
+
+- Naive Forecast;
+- 4-week Moving Average;
+- Holt-Winters.
+
+Holt-Winters produced the best overall result for some categories, but forecast errors remained relatively high.
+
+This led to a second question:
+
+> Is the volatility actually driven by commercial behavior, or by the structure of the dataset?
+
+---
+
+## Methodological Revision
+
+Further investigation showed that weekly sales totals were strongly associated with the number of records available in each week.
+
+Approximate correlation between weekly sales totals and number of observations:
+
+- **Electronics: 0.92**
+- **Personal Care: 0.94**
+
+This meant that part of the apparent weekly volatility was caused by dataset density rather than pure demand variation.
+
+The forecasting methodology was therefore revised.
+
+Instead of generating future observations for every possible store × day combination, the corrected version preserves a future observation density similar to the historical dataset.
+
+This revision was not arbitrary. It resulted from:
+
+1. observing an unusual forecasting result;
+2. formulating a hypothesis;
+3. testing the hypothesis in a separate analysis;
+4. identifying a methodological limitation;
+5. redesigning the forecasting process.
+
+This iterative review is an important part of the project.
+
+---
+
+## Commercial Drivers
+
+The analysis evaluated the predictive contribution of:
+
+- price;
+- discount;
+- promotion;
+- inventory;
+- store;
+- category;
+- weekday;
+- month.
+
+Among the available variables, **discount percentage showed the strongest predictive contribution** in the Random Forest model.
+
+Promotion showed a weaker positive association, while price and inventory had limited consistent predictive importance in this dataset.
+
+The model was treated as predictive rather than causal.
+
+---
+
+## Financial Planning
+
+Forecasted demand was converted into:
+
+- effective selling price;
+- estimated revenue;
+- estimated cost;
+- gross profit;
+- gross margin.
+
+Because product cost was not available in the original dataset, cost was explicitly introduced as an editable planning assumption.
+
+Initial assumptions:
+
+- Electronics cost: **65% of list price**
+- Personal Care cost: **55% of list price**
+
+The analysis tested:
+
+- Base scenario;
+- +5 percentage points of discount;
+- +10 percentage points of discount.
+
+The central finding was:
+
+> **Higher sales volume does not automatically generate higher profitability.**
+
+For both Electronics and Personal Care, the additional volume generated by larger discounts was insufficient to compensate for the reduction in unit contribution margin.
+
+---
+
+## Break-even Insight
+
+The project calculated how much demand would need to increase to preserve gross profit after a larger discount.
+
+For example:
+
+| Category | Discount Scenario | Predicted Volume Growth | Required Growth to Preserve Profit |
+|---|---:|---:|---:|
+| Electronics | +5 pp | -0.36% | +16.67% |
+| Electronics | +10 pp | +2.40% | +40.00% |
+| Personal Care | +5 pp | -0.25% | +12.50% |
+| Personal Care | +10 pp | +2.44% | +28.57% |
+
+This provides a direct financial interpretation of discount decisions.
+
+---
+
+# Project 2 — Inventory & Profit Optimization
+
+## Business Question
+
+**Given limited capital and forecasted demand, how should inventory investment be allocated to maximize expected profit?**
+
+The second project uses the demand and financial assumptions developed in Project 1.
+
+The optimization was built in **Microsoft Excel Solver**.
+
+### Initial assumptions
+
+- budget: **R$ 1,500,000**
+- inventory capacity: **4,000 units**
+- minimum purchase per category: **20% of forecast demand**
+- maximum purchase: **100% of forecast demand**
+- planning horizon: **8 weeks**
+- decision variables restricted to non-negative integers.
+
+---
+
+## Objective Function
+
+The Solver maximizes:
+
+```text
+Total Profit
+=
+Electronics Quantity × Electronics Unit Profit
++
+Personal Care Quantity × Personal Care Unit Profit
+```
+
+Subject to:
+
+- total investment ≤ available budget;
+- total quantity ≤ inventory capacity;
+- purchase quantity ≤ forecast demand;
+- purchase quantity ≥ minimum required allocation;
+- integer quantities.
+
+The optimization method used was **Simplex LP**.
+
+---
+
+## Solver Result
+
+Optimal allocation:
+
+- **Electronics: 361 units**
+- **Personal Care: 1,304 units**
+- **Total inventory: 1,666 units**
+- **Capital used: approximately R$ 1.5 million**
+- **Estimated revenue: approximately R$ 2.64 million**
+- **Expected profit: approximately R$ 1.14 million**
+
+The Solver kept Electronics at the minimum required allocation and directed most remaining capital to Personal Care.
+
+The reason is straightforward:
+
+- Electronics generates approximately **53.8% profit per real invested**;
+- Personal Care generates approximately **81.8% profit per real invested**.
+
+---
+
+## Business Insight
+
+The **budget constraint is binding**, while inventory capacity is not.
+
+Inventory capacity:
+
+- available: 4,000 units;
+- optimized allocation: 1,666 units;
+- unused capacity: 2,334 units.
+
+Therefore:
+
+> Increasing warehouse capacity would not increase profit under the current scenario.
+
+The real constraint is **available capital**.
+
+This turns the Solver result into a capital allocation decision rather than only an inventory exercise.
+
+---
+
+# Project 3 — Pricing & Margin Optimization
+
+## Business Question
+
+**What discount level maximizes volume, revenue, profit, or margin?**
+
+The third project converts discount into a decision variable.
+
+Discount levels from **0% to 30%** were tested using the same future observation structure for all scenarios.
+
+For each discount level, the project estimates:
+
+- demand;
+- effective price;
+- revenue;
+- cost;
+- gross profit;
+- gross margin.
+
+---
+
+## Pricing Results
+
+### Electronics
+
+| Objective | Optimal Discount |
+|---|---:|
+| Maximum Volume | 26% |
+| Maximum Revenue | 13% |
+| Maximum Profit | 0% |
+| Maximum Margin | 0% |
+
+At 0% discount:
+
+- forecast demand: approximately 1,807 units;
+- estimated revenue: approximately R$ 2.32 million;
+- estimated gross profit: approximately R$ 812 thousand;
+- gross margin: 35%.
+
+At 13% discount:
+
+- demand increases to approximately 2,138 units;
+- revenue reaches approximately R$ 2.39 million;
+- gross profit falls to approximately R$ 604 thousand.
+
+At approximately 26% discount:
+
+- volume reaches its maximum;
+- profit falls sharply.
+
+This clearly demonstrates that:
+
+> **The discount that maximizes sales volume is not the discount that maximizes profit.**
+
+---
+
+### Personal Care
+
+| Objective | Optimal Discount |
+|---|---:|
+| Maximum Volume | 27% |
+| Maximum Revenue | 0% |
+| Maximum Profit | 0% |
+| Maximum Margin | 0% |
+
+Personal Care responds to discounts with higher predicted demand, but the increase is not sufficient to offset the decline in effective price.
+
+Revenue and profit therefore remain highest without discount.
+
+---
+
+## Pricing Optimization with Constraints
+
+A second pricing stage automatically selects the best discount under financial restrictions.
+
+Initial minimum-margin rules:
+
+- Electronics: **25%**
+- Personal Care: **35%**
+
+Under those constraints:
+
+| Category | Business Goal | Optimal Discount |
+|---|---|---:|
+| Electronics | Maximize Profit | 0% |
+| Electronics | Maximize Revenue | 13% |
+| Electronics | Maximize Volume | 13% |
+| Personal Care | Maximize Profit | 0% |
+| Personal Care | Maximize Revenue | 0% |
+| Personal Care | Maximize Volume | 13% |
+
+The analysis also tests how pricing decisions change when minimum margin requirements become stricter.
+
+For example, in Electronics:
+
+- 20% minimum margin allows a larger discount;
+- 25% minimum margin limits the discount;
+- 30% minimum margin effectively eliminates aggressive discounting.
+
+---
+
+# Main Business Conclusions
+
+The three projects produce a connected analytical story.
+
+### 1. Forecasting alone is not enough
+
+Forecasts must be tested against data quality, dataset structure and commercial drivers.
+
+### 2. More sales do not necessarily mean more profit
+
+Discounts can increase demand while simultaneously reducing total profitability.
+
+### 3. Capital should be allocated based on economic return
+
+When resources are limited, inventory should not necessarily be distributed proportionally across categories.
+
+### 4. The optimal price depends on the objective
+
+A company seeking volume may choose a different discount from a company prioritizing revenue or profit.
+
+### 5. Constraints matter
+
+Budget, capacity and minimum-margin requirements can fundamentally change the optimal business decision.
+
+---
+
+# External Market Context
+
+The repository also includes external market context for the Electronics analysis.
+
+Brazilian market evidence from 2025 showed:
+
+- significant variation in electronics-related retail performance during the year;
+- strong order-volume growth during Black Friday;
+- lower average ticket during promotional periods;
+- continued relevance of promotional campaigns and installment purchasing in consumer electronics.
+
+These sources are used only as **external contextual evidence**.
+
+They are not used as model training data and should not be interpreted as causal validation of the project results.
+
+See:
+
+`EXTERNAL_MARKET_CONTEXT_ELECTRONICS_2025.md`
+
+---
+
+# Tools & Technologies
+
+### Python
+
+- pandas
+- NumPy
+- Matplotlib
+- scikit-learn
+- statsmodels
+
+### Machine Learning / Forecasting
+
+- Naive Forecast
+- Moving Average
+- Holt-Winters Exponential Smoothing
+- Ridge Regression
+- Random Forest Regression
+
+### Financial Analytics
+
+- scenario analysis
+- break-even analysis
+- contribution margin
+- cost sensitivity
+- profitability analysis
+- capital allocation
+- pricing optimization
+
+### Optimization
+
+- Microsoft Excel Solver
+- Simplex LP
+- discrete pricing optimization
+
+### Data Visualization
+
+- Matplotlib
+- Excel
+
+---
+
+# Suggested Repository Structure
+
+```text
+retail-analytics-portfolio/
+│
+├── README.md
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── project_1_forecasting/
+│   ├── EDA/
+│   ├── Forecasting/
+│   ├── Demand_Drivers/
+│   └── Financial_Planning/
+│
+├── project_2_solver/
+│   └── Inventory_Profit_Optimization.xlsx
+│
+├── project_3_pricing/
+│   ├── Pricing_Margin_Optimization.ipynb
+│   └── Pricing_Optimization_Constraints.ipynb
+│
+├── external_context/
+│   └── EXTERNAL_MARKET_CONTEXT_ELECTRONICS_2025.md
+│
+└── outputs/
+    ├── forecast_results/
+    ├── financial_scenarios/
+    └── pricing_results/
+```
+
+---
+
+# Limitations
+
+The project should be interpreted within the limitations of the available dataset.
+
+### Dataset structure
+
+The dataset does not represent a complete transactional history for every store and product combination.
+
+This affects how aggregated weekly totals should be interpreted.
+
+### Cost data
+
+Actual product cost was not provided.
+
+Cost percentages were introduced as explicit planning assumptions and tested through sensitivity analysis.
+
+### Predictive vs causal interpretation
+
+The models identify predictive relationships.
+
+They do not prove that discounts, promotions or other variables caused changes in demand.
+
+### Forecast uncertainty
+
+Some forecasting models produced relatively high MAPE values.
+
+The project therefore avoids presenting model outputs as certain predictions and instead uses them as analytical inputs for scenario planning.
+
+---
+
+# Final Perspective
+
+This project was designed to demonstrate an end-to-end analytical decision process:
+
+```text
+Understand the data
+        ↓
+Validate assumptions
+        ↓
+Forecast demand
+        ↓
+Investigate commercial drivers
+        ↓
+Translate forecasts into financial outcomes
+        ↓
+Optimize limited resources
+        ↓
+Optimize pricing decisions
+```
+
+The key principle across all three projects is:
+
+> **Analytics becomes more valuable when it moves from describing what happened to supporting what the business should do next.**
