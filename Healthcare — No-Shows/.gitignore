@@ -1,0 +1,14 @@
+# Credentials
+.env
+.streamlit/secrets.toml
+**/.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local data / exports
+*.csv
