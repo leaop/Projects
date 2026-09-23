@@ -1,0 +1,10 @@
+pandas
+numpy
+matplotlib
+jupyter
+openpyxl
+sqlalchemy
+pyodbc
+python-dotenv
+streamlit
+altair

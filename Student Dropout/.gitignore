@@ -1,0 +1,23 @@
+# Credentials
+.env
+.streamlit/secrets.toml
+**/.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Raw and processed data
+data/raw/*
+data/external/*
+data/interim/*
+data/processed/*
+
+# Keep folders in Git
+!data/raw/.gitkeep
+!data/external/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
